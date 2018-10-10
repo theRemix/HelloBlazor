@@ -34,6 +34,26 @@ else
     </table>
 }
 
+<h2 class="code-snippet-header">Code Snippet</h2>
+
+<code><pre>@("@functions {\n"+
+    "\tWeatherForecast[] forecasts;\n"+
+    "\n"+
+    "\tprotected override async Task OnInitAsync()\n"+
+    "\t{\n"+
+        "\t\tforecasts = await Http.GetJsonAsync<WeatherForecast[]>(\"sample-data/weather.json\");\n"+
+    "\t}\n"+
+    "\n"+
+    "\tclass WeatherForecast\n"+
+    "\t{\n"+
+        "\t\tpublic DateTime Date { get; set; }\n"+
+        "\t\tpublic int TemperatureC { get; set; }\n"+
+        "\t\tpublic int TemperatureF { get; set; }\n"+
+        "\t\tpublic string Summary { get; set; }\n"+
+"\t}\n"+
+"}")
+</pre></code>
+
 @functions {
     WeatherForecast[] forecasts;
 

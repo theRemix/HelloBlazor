@@ -6,6 +6,20 @@
 
 <button class="btn btn-primary" onclick="@IncrementCount">Click me</button>
 
+<h2 class="code-snippet-header">Code Snippet</h2>
+
+<code><pre>@( "<p>Current count: @currentCount</p>\n"+
+"<button class=\"btn btn-primary\" onclick=\"@IncrementCount\">Click me</button>\n"+
+"\n"+
+"@functions {\n"+
+"\tint currentCount = 0;\n"+
+"\tvoid IncrementCount()\n"+
+"\t{\n"+
+"\t\tcurrentCount++;\n"+
+"\t}\n"+
+"}")
+</pre></code>
+
 @functions {
     int currentCount = 0;
 

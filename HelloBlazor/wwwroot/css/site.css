@@ -10,6 +10,25 @@ app {
     flex-direction: column;
 }
 
+#list-of-components-container {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.code-snippet-header {
+    margin-top: 60px;
+}
+
+code {
+     font-size: 1.6em;
+}
+code pre {
+     background-color: #121212;
+     color: #FEFEFE;
+     padding: 20px;
+}
+
+
 .top-row {
     height: 3.5rem;
     display: flex;
@@ -38,7 +57,7 @@ app {
     }
 
     .sidebar .oi {
-        width: 2rem;
+        width: 2.4rem;
         font-size: 1.1rem;
         vertical-align: text-top;
         top: -2px;
@@ -47,6 +66,7 @@ app {
 .nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;
+    min-width:250px;
 }
 
     .nav-item:first-of-type {

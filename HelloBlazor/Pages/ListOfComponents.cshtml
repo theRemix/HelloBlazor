@@ -1,0 +1,29 @@
+﻿@page "/list-of-components"
+
+<h1>List of @NumItems Components</h1>
+
+<ul id="list-of-components-container">
+    @for (var i = 1; i <= @NumItems; i++)
+    {
+        <ChildComponent Name="@("ChildComponent "+i)" Description="@("Description "+i)" />
+    }
+</ul>
+
+<h2 class="code-snippet-header">Code Snippet</h2>
+
+<code><pre>@("<ul id=\"list-of-components-container\">\n"+
+"  @for (var i = 1; i <= @NumItems; i++)\n"+
+"  {\n"+
+"    <ChildComponent Name=\"@(\"ChildComponent \"+i)\" Description=\"@(\"Description \"+i)\" />\n"+
+"  }\n"+
+"</ul>"+
+"\n"+
+"@functions {\n"+
+"  private int NumItems = 10000;\n"+
+"}\n")
+</pre></code>
+
+
+@functions {
+    private int NumItems = 10000;
+}
