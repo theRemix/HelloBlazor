@@ -8,7 +8,8 @@
 
 @if (@NumItems == 100)
 {
-<h2>Fire Chart</h2>
+<h2>Flame Chart</h2>
+<p class="small">Without Javascript Interop</p>
 <div>
     <img src="/images/vanilla-100-components-fire.png" alt="Fire Chart of Vanilla JS rendering 100 components." />
 </div>
@@ -16,22 +17,26 @@
 
 @if (@NumItems == 10000)
 {
-<h2>Fire Chart</h2>
+<h2>Flame Chart</h2>
+<p class="small">Without Javascript Interop</p>
 <div>
     <img src="/images/vanilla-10000-components-fire.png" alt="Fire Chart of Vanilla JS rendering 10000 components." />
 </div>
 }
 
 <div>
-    <button class="btn btn-primary" onclick="@RenderListOf100Components">Render 100 Items</button>
-    <button class="btn btn-primary" onclick="@RenderListOf10000Components">Render 10000 Items</button>
+    @if (@NumItems > 0) {
+        <button class="btn" onclick="@ClearItems">Clear Items</button>
+    }
+    <button class="btn btn-primary" onclick="@Render100Items">Render 100 Items</button>
+    <button class="btn btn-primary" onclick="@Render10000Items">Render 10000 Items</button>
 </div>
 
 <h2 class="code-snippet-header">Code Snippet</h2>
 
 <code><pre>@("<ul id=\"list-of-components-container\"></ul>\n"+
-"<button onclick=\"renderListOfComponentsJS(100)\">Render 100 Items</button>\n"+
-"<button onclick=\"renderListOfComponentsJS(10000)\">Render 10000 Items</button>\n")
+"<button onclick=\"@Render100Items\">Render 100 Items</button>\n"+
+"<button onclick=\"@Render10000Items\">Render 10000 Items</button>\n")
 </pre></code>
 
 <code><pre>
@@ -78,13 +83,19 @@ function updateList(numItems) {
 @functions {
     private int NumItems = 0;
 
-    void RenderListOf100Components()
+    void ClearItems()
+    {
+        NumItems = 0;
+        VanillaInterop.RenderListOfComponentsJS(NumItems);
+    }
+
+    void Render100Items()
     {
         NumItems = 100;
         VanillaInterop.RenderListOfComponentsJS(NumItems);
     }
 
-    void RenderListOf10000Components()
+    void Render10000Items()
     {
         NumItems = 10000;
         VanillaInterop.RenderListOfComponentsJS(NumItems);

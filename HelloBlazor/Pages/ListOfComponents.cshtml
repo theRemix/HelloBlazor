@@ -11,7 +11,7 @@
 
 @if (@NumItems == 100)
 {
-    <h2>Fire Chart</h2>
+    <h2>Flame Chart</h2>
     <div>
         <img src="/images/blazor-100-components-fire.png" alt="Fire Chart of Blazor rendering 100 components." />
     </div>
@@ -19,7 +19,7 @@
 
 @if (@NumItems == 10000)
 {
-    <h2>Fire Chart</h2>
+    <h2>Flame Chart</h2>
     <div>
         <img src="/images/blazor-10000-components-fire.png" alt="Fire Chart of Blazor rendering 10000 components." />
         <h4>Console output</h4>
@@ -32,8 +32,11 @@
 }
 
 <div>
-    <button class="btn btn-primary" onclick="@Render100Components">Render 100 Items</button>
-    <button class="btn btn-primary" onclick="@Render10000Components">Render 10000 Items</button>
+    @if (@NumItems > 0) {
+        <button class="btn" onclick="@ClearItems">Clear Items</button>
+    }
+    <button class="btn btn-primary" onclick="@Render100Items">Render 100 Items</button>
+    <button class="btn btn-primary" onclick="@Render10000Items">Render 10000 Items</button>
 </div>
 
 <h2 class="code-snippet-header">Code Snippet</h2>
@@ -45,18 +48,18 @@
 "  }\n"+
 "</ul>"+
 "\n"+
-"<button onclick=\"@Render100Components\">Render 100 Items</button>\n"+
-"<button onclick=\"@Render10000Components\">Render 10000 Items</button>\n"+
+"<button onclick=\"@Render100Items\">Render 100 Items</button>\n"+
+"<button onclick=\"@Render10000Items\">Render 10000 Items</button>\n"+
 "\n"+
 "@functions {\n"+
 "  private int NumItems = 0;\n"+
 "\n"+
-"  private void Render100Components()\n"+
+"  private void Render100Items()\n"+
 "  {\n"+
 "    NumItems = 100;\n"+
 "  }\n"+
 "\n"+
-"  private void Render10000Components()\n"+
+"  private void Render10000Items()\n"+
 "  {\n"+
 "    NumItems = 10000;\n"+
 "  }\n"+
@@ -67,12 +70,17 @@
 @functions {
     private int NumItems = 0;
 
-    private void Render100Components()
+    void ClearItems()
+    {
+        NumItems = 0;
+    }
+
+    private void Render100Items()
     {
         NumItems = 100;
     }
 
-    private void Render10000Components()
+    private void Render10000Items()
     {
         NumItems = 10000;
     }
