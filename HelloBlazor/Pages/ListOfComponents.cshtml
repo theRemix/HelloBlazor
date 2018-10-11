@@ -1,29 +1,79 @@
 ﻿@page "/list-of-components"
 
-<h1>List of @NumItems Components</h1>
+<h1>Blazor Components</h1>
 
-<ul id="list-of-components-container">
+<ul class="list-of-components">
     @for (var i = 1; i <= @NumItems; i++)
     {
         <ChildComponent Name="@("ChildComponent "+i)" Description="@("Description "+i)" />
     }
 </ul>
 
+@if (@NumItems == 100)
+{
+    <h2>Fire Chart</h2>
+    <div>
+        <img src="/images/blazor-100-components-fire.png" alt="Fire Chart of Blazor rendering 100 components." />
+    </div>
+}
+
+@if (@NumItems == 10000)
+{
+    <h2>Fire Chart</h2>
+    <div>
+        <img src="/images/blazor-10000-components-fire.png" alt="Fire Chart of Blazor rendering 10000 components." />
+        <h4>Console output</h4>
+        <p class="flame-10000-explanation">
+            WASM: Mono: GC_MAJOR_SWEEP: major size: 11568K in use: 22620K<br />
+            WASM: Mono: GC_MAJOR: (LOS overflow) time 26.00ms, stw 26.00ms los size: 9824K in use: 8212K <br />
+            WASM: Mono: GC_MINOR: (LOS overflow) time 1.00ms, stw 1.00ms promoted 0K major size: 11568K in use: 10564K los size: 9824K in use: 8212K
+        </p>
+    </div>
+}
+
+<div>
+    <button class="btn btn-primary" onclick="@Render100Components">Render 100 Items</button>
+    <button class="btn btn-primary" onclick="@Render10000Components">Render 10000 Items</button>
+</div>
+
 <h2 class="code-snippet-header">Code Snippet</h2>
 
-<code><pre>@("<ul id=\"list-of-components-container\">\n"+
+<code><pre>@("<ul id=\"list-of-components\">\n"+
 "  @for (var i = 1; i <= @NumItems; i++)\n"+
 "  {\n"+
 "    <ChildComponent Name=\"@(\"ChildComponent \"+i)\" Description=\"@(\"Description \"+i)\" />\n"+
 "  }\n"+
 "</ul>"+
 "\n"+
+"<button onclick=\"@Render100Components\">Render 100 Items</button>\n"+
+"<button onclick=\"@Render10000Components\">Render 10000 Items</button>\n"+
+"\n"+
 "@functions {\n"+
-"  private int NumItems = 10000;\n"+
+"  private int NumItems = 0;\n"+
+"\n"+
+"  private void Render100Components()\n"+
+"  {\n"+
+"    NumItems = 100;\n"+
+"  }\n"+
+"\n"+
+"  private void Render10000Components()\n"+
+"  {\n"+
+"    NumItems = 10000;\n"+
+"  }\n"+
 "}\n")
 </pre></code>
 
 
 @functions {
-    private int NumItems = 10000;
+    private int NumItems = 0;
+
+    private void Render100Components()
+    {
+        NumItems = 100;
+    }
+
+    private void Render10000Components()
+    {
+        NumItems = 10000;
+    }
 }

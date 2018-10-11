@@ -1,0 +1,93 @@
+﻿@page "/js-list-of-components"
+
+@using HelloBlazor
+
+<h1>Vanilla JS "Components"</h1>
+
+<ul class="list-of-components" id="list-of-components-js-container"></ul>
+
+@if (@NumItems == 100)
+{
+<h2>Fire Chart</h2>
+<div>
+    <img src="/images/vanilla-100-components-fire.png" alt="Fire Chart of Vanilla JS rendering 100 components." />
+</div>
+}
+
+@if (@NumItems == 10000)
+{
+<h2>Fire Chart</h2>
+<div>
+    <img src="/images/vanilla-10000-components-fire.png" alt="Fire Chart of Vanilla JS rendering 10000 components." />
+</div>
+}
+
+<div>
+    <button class="btn btn-primary" onclick="@RenderListOf100Components">Render 100 Items</button>
+    <button class="btn btn-primary" onclick="@RenderListOf10000Components">Render 10000 Items</button>
+</div>
+
+<h2 class="code-snippet-header">Code Snippet</h2>
+
+<code><pre>@("<ul id=\"list-of-components-container\"></ul>\n"+
+"<button onclick=\"renderListOfComponentsJS(100)\">Render 100 Items</button>\n"+
+"<button onclick=\"renderListOfComponentsJS(10000)\">Render 10000 Items</button>\n")
+</pre></code>
+
+<code><pre>
+// Simulate @@NumItems
+const numItems = new Proxy({ value: 0 }, {
+    get: (obj, prop) => prop in obj ? obj[prop] : 0,
+    set: (obj, prop, value) => {
+        updateList(value);
+        obj[prop] = value;
+    }
+});
+
+// Simulate @@NumItems = num
+function renderListOfComponentsJS(num) {
+    numItems.value = num;
+}
+
+function updateList(numItems) {
+
+    const container = document.querySelector('#list-of-components-js-container');
+    container.innerHTML = "";
+
+    const createChild = (name, description) => {
+        const liEl = document.createElement('li');
+
+        const nameEl = document.createElement('h3');
+        nameEl.innerText = name;
+
+        const descriptionEl = document.createElement('p');
+        descriptionEl.innerText = description;
+
+        liEl.appendChild(nameEl);
+        liEl.appendChild(descriptionEl);
+
+        return liEl;
+    }
+
+    for (let i = 1; i <= numItems; i++)
+        container.appendChild(createChild(`ChildComponent ${i}`, `Description ${i}`));
+
+}
+</pre></code>
+
+@functions {
+    private int NumItems = 0;
+
+    void RenderListOf100Components()
+    {
+        NumItems = 100;
+        VanillaInterop.RenderListOfComponentsJS(NumItems);
+    }
+
+    void RenderListOf10000Components()
+    {
+        NumItems = 10000;
+        VanillaInterop.RenderListOfComponentsJS(NumItems);
+    }
+
+}

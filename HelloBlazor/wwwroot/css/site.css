@@ -10,7 +10,7 @@ app {
     flex-direction: column;
 }
 
-#list-of-components-container {
+.list-of-components {
     max-height: 200px;
     overflow: auto;
 }
@@ -66,7 +66,7 @@ code pre {
 .nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;
-    min-width:250px;
+    min-width:300px;
 }
 
     .nav-item:first-of-type {
