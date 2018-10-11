@@ -13,12 +13,12 @@
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
+#[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
 bld/
-[Bb]in/
+# [Bb]in/
 [Oo]bj/
 [Ll]og/
 
@@ -136,7 +136,7 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish/
+# publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml
@@ -259,3 +259,14 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/HelloBlazor/bin/Release/netstandard2.0/dist/_framework
+/HelloBlazor/bin/Release/netstandard2.0/Mono.WebAssembly.Interop.dll
+/HelloBlazor/bin/Release/netstandard2.0/Microsoft.JSInterop.dll
+/HelloBlazor/bin/Release/netstandard2.0/Microsoft.Extensions.DependencyInjection.dll
+/HelloBlazor/bin/Release/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/HelloBlazor/bin/Release/netstandard2.0/Microsoft.AspNetCore.Blazor.TagHelperWorkaround.dll
+/HelloBlazor/bin/Release/netstandard2.0/Microsoft.AspNetCore.Blazor.dll
+/HelloBlazor/bin/Release/netstandard2.0/Microsoft.AspNetCore.Blazor.Browser.dll
+/HelloBlazor/bin/Release/netstandard2.0/HelloBlazor.dll
+/HelloBlazor/bin/Release/netstandard2.0/HelloBlazor.blazor.config
+/HelloBlazor/bin/Release/netstandard2.0/publish/web.config
